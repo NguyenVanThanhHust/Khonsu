@@ -5,11 +5,19 @@
 #include <vector> 
 #include <sstream>
 #include <algorithm>
+#include <cassert> 
+#include <random>
+#include <cmath>
+
 #include "yaml-cpp/yaml.h"
 
 using std::cout;
 using std::cin;
 using std::endl;
+
+struct Tensor {
+    std::shared_ptr<float> weight;
+}
 
 struct sample {
     float x1;
@@ -20,10 +28,24 @@ struct sample {
 
 class LinearLayer {
 public:
-    std::shared_ptr<float> weight=nullptr;
-    void forward(float );
-    void backward();
+    std::shared_ptr<float> host_weight=nullptr;
+    LinearLayer(std::vector<int> _shape);
+    ~LinearLayer();
+    matrix& forward(Tensor& input);
+    matrix& backward(Tensor& output);
 }
+
+
+LinearLayer::LinearLayer(std::vector<int> _shape)
+{
+    std::random_device rd{};
+    std::mt19937 gen{rd()};
+
+    std::assert(_shape.size() == 2, "currently, accept only MxN matrix to test")
+    shape = shape;
+
+}
+
 int main(int argc, char** argv)
 {
     cout<<"Loading config"<<endl;
@@ -85,6 +107,8 @@ int main(int argc, char** argv)
         cout<<"x1: "<<sample.x1<<" x2: "<<sample.x2<<" y: "<<sample.y<<endl;
     }
 
-    
+    // Define layer in here
+    std::vector<int> shape{2, 6};
+    LinearLayer linearLayer = LinearLayer(shape);
     return 0;
 }
