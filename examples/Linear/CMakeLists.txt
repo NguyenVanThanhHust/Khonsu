@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.5.1)
 message(STATUS "CMake version: ${CMAKE_VERSION}")
+set(CMAKE_CXX_STANDARD 17)
 
 project(linear_sample)
-
 option(USE_CUDA "Use CUDA" ON)
 
 file(GLOB cpu_source_files "${CMAKE_SOURCE_DIR}/*.cpp")

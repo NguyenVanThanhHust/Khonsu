@@ -1,4 +1,5 @@
 linear_sample
+.vscode
 
 *.i
 *.ii
@@ -6,7 +7,6 @@ linear_sample
 *.ptx
 *.cubin
 *.fatbin
-
 # Prerequisites
 *.d
 
