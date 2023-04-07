@@ -1,2 +1,5 @@
 # Linear layer
-How la
+## Math formula
+We consider simplest form $Y=W*X+b$
+
+## Implementation

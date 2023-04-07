@@ -31,19 +31,22 @@ public:
     std::shared_ptr<float> host_weight=nullptr;
     LinearLayer(std::vector<int> _shape);
     ~LinearLayer();
-    matrix& forward(Tensor& input);
-    matrix& backward(Tensor& output);
+    Tensor& forward(Tensor& input);
+    Tensor& backward(Tensor& output);
 }
 
 
 LinearLayer::LinearLayer(std::vector<int> _shape)
 {
-    std::random_device rd{};
-    std::mt19937 gen{rd()};
+    std::random_device device_random_;
+    std::default_random_engine generator_(device_random_());
 
     std::assert(_shape.size() == 2, "currently, accept only MxN matrix to test")
-    shape = shape;
+    shape = _shape;
+    std::normal_distribution<> distribution_x(0.0, 0.5);
+    std::normal_distribution<> distribution_y(0.0, 0.5);
 
+    
 }
 
 int main(int argc, char** argv)
