@@ -1,5 +1,5 @@
 # Linear layer
 ## Math formula
-We consider simplest form $Y=W*X+b$
+We consider simplest form $Y=X*W+b$
 
 ## Implementation

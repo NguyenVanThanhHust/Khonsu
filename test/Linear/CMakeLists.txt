@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 project(linear_sample)
 option(USE_CUDA "Use CUDA" ON)
 
-file(GLOB cpu_source_files "${CMAKE_SOURCE_DIR}/*.cpp")
-file(GLOB gpu_source_files "${CMAKE_SOURCE_DIR}/*.cu")
 enable_language("CUDA")
-add_executable(linear_sample ${cpu_source_files} ${gpu_source_files})
 
 find_package(yaml-cpp REQUIRED)
 
@@ -21,6 +18,10 @@ include_directories(
     ${YAML_INCLUDE_DIRS}
 )
 
-target_link_libraries(linear_sample 
+add_executable(linear_cpp 
+    linear.cpp
+)    
+
+target_link_libraries(linear_cpp 
     ${YAML_CPP_LIBRARIES}
 )
