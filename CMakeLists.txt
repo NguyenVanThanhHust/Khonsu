@@ -1,14 +1,13 @@
-cmake_minimum_required(VERSION 3.5.1)
+cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
+project(linear_cpp LANGUAGES CXX CUDA)
+
 message(STATUS "CMake version: ${CMAKE_VERSION}")
 set(CMAKE_CXX_STANDARD 17)
+find_package(CUDA REQUIRED)
 
-project(linear_sample)
 option(USE_CUDA "Use CUDA" ON)
 
-file(GLOB cpu_source_files "${CMAKE_SOURCE_DIR}/*.cpp")
-file(GLOB gpu_source_files "${CMAKE_SOURCE_DIR}/*.cu")
 enable_language("CUDA")
-add_executable(linear_sample ${cpu_source_files} ${gpu_source_files})
 
 find_package(yaml-cpp REQUIRED)
 
@@ -19,8 +18,16 @@ endif()
 
 include_directories(
     ${YAML_INCLUDE_DIRS}
+    .
 )
 
-target_link_libraries(linear_sample 
+add_executable(${PROJECT_NAME}
+    src/layers/base/tensor.hpp
+    src/layers/base/tensor.cpp 
+    src/layers/base/tensor.cu
+    examples/main.cpp
+)    
+
+target_link_libraries(${PROJECT_NAME} 
     ${YAML_CPP_LIBRARIES}
 )

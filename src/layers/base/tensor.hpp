@@ -1,17 +1,15 @@
 #pragma once
-#ifndef TENSOR
-#define TENSOR
+#ifndef TENSOR_H
+#define TENSOR_H
 
 #include <memory>
-#include "shape.hpp"
 
 namespace khonsu{
     class Tensor {
     public:
-        Shape shape;
         std::shared_ptr<float> host_data;
         Tensor();
         ~Tensor();
-    }
-}
+    };
+};
 #endif

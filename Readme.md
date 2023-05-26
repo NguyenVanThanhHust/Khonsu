@@ -6,7 +6,6 @@ Document for each layer or function should be in at least 1 of 3 place: comment 
 
 ## TODO
 - [x] Test linear layer with Numpy
-- [ ] Visualize linear layer 
 - [ ] Docs for linear layer
 - [ ] Linear layer in CUDA
 - [ ] Test slow convolution layer with Numpy
